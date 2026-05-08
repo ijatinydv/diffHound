@@ -1,0 +1,10 @@
+{
+  "name": "@codesentry/queue",
+  "version": "1.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "packageManager": "pnpm@10.32.1"
+}
