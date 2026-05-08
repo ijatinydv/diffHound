@@ -1,5 +1,5 @@
 {
-  "name": "@codesentry/queue",
+  "name": "@diffhound/queue",
   "version": "1.0.0",
   "private": true,
   "main": "./src/index.ts",
