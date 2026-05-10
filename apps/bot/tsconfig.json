@@ -1,8 +1,14 @@
 {
-    "extends" : "../../tsconfig.json",
-    "compilerOptions": {
-        "outDir": "./dist",
-        "rootDir": "./src"
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "paths": {
+      "@diffhound/types": ["../../packages/types/dist/index.d.ts"],
     },
-    "include": ["src"]
+  },
+  "include": ["src"],
+  "references": [{ "path": "../../packages/types" }],
 }

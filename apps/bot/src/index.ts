@@ -2,7 +2,6 @@ import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { webhookRoute } from "./routes/webhook";
 import { env } from "./config/index";
-import { error } from "node:console";
 
 const app = new Hono();
 
