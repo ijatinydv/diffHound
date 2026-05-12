@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { serve } from "@hono/node-server";
 import { webhookRoute } from "./routes/webhook";
+import { startReviewWorker } from "./workers/review.worker";
 import { env } from "./config/index";
 
 const app = new Hono();
@@ -8,6 +9,9 @@ const app = new Hono();
 app.post("/webhook", webhookRoute);
 
 app.notFound((c) => c.json({ error: "Not found" }, 404));
+
+const worker = startReviewWorker();
+console.log("Review worker started")
 
 serve(
   {
@@ -19,3 +23,10 @@ serve(
     console.log("waiting for github webhooks..");
   },
 );
+
+// Graceful shutdown
+process.on("SIGTERM", async ()=>{
+  console.log("Shutting down");
+  await worker.close()
+  process.exit(0)
+})

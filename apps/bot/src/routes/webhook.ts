@@ -3,6 +3,7 @@ import { verifyGithubSignature } from "../lib/verify";
 import { PRWebhookPayloadSchema } from "../lib/schema";
 import { env } from "../config";
 import { PREvent } from "@diffhound/types";
+import { enqueueReview } from "../queues/review.queue";
 
 export async function webhookRoute(c: Context) {
   const rawBody = await c.req.text();
@@ -63,4 +64,6 @@ async function handlePullRequestEvent(rawPayload: unknown): Promise<void> {
   console.log(`PR #${event.prNumber} : ${event.prTitle}`);
   console.log(`Repo : ${event.repoFullName}`);
   console.log(`Author : ${payload.pull_request.user.login}`);
+  
+  await enqueueReview(event);
 }
