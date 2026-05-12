@@ -10,13 +10,15 @@
   "packageManager": "pnpm@10.32.1",
   "dependencies": {
     "@hono/node-server": "^2.0.2",
+    "bullmq": "^5.76.6",
     "dotenv": "^17.4.2",
     "hono": "^4.12.18",
+    "ioredis": "^5.10.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/node": "^25.6.2",
     "@diffhound/types": "workspace:*",
+    "@types/node": "^25.6.2",
     "tsx": "^4.21.0"
   }
 }
